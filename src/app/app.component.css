@@ -1,0 +1,12 @@
+body{
+    margin: 0;
+    padding:0px;
+    width: 100vh;
+    height: 100vh;
+    
+}
+
+.input  {
+    height: 2vh;
+    width: 2vh;
+}
