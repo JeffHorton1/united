@@ -11,7 +11,6 @@
 </head>
 
 <body>
-    <div class="container">
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
             crossorigin="anonymous"></script>
@@ -21,25 +20,29 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
             crossorigin="anonymous"></script>
+
+            
+    <div class="container">
+        
         <form>
-            <div>
-                <input type="file" multiple="multiple" name="fileUpload">
-                <input type="button" id="upload" value="upload"
+            <div class="images">
+                <input type="file" multiple="multiple" name="images">
+                <input type="button" id="images" value="upload"
                     onclick="google.script.run.logForm(document.getElementById('uploadTest'));">
             </div>
 
             <div class="form-group">
-                <label for="selectMachine">Machine Select</label>
-                <select class="form-control" id="selectMachine">
+                <label for="machine">Machine Select</label>
+                <select class="form-control" id="machine">
                     <option>Kiosk</option>
-                    <option>PSA Line</option>
+                    <option>TSA Line</option>
                     <option>Gate</option>
                 </select>
             </div>
 
             <div class="form-group">
                 <label for="">Text Area</label>
-                <textarea class="textA" id="textA"></textarea>
+                <textarea class="textA" id="comments"></textarea>
             </div>
             <div class="form-check">
                 <input class="form-check-input mr-40 " type="checkbox" value="green" id="green">
@@ -55,7 +58,7 @@
                     Red
                 </label>
             </div>
-            <div>
+            <div class="subBut">
                 <button type="submit" class="btn btn-primary mt-2">Submit</button>
             </div>
         </form>

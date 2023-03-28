@@ -12,8 +12,8 @@
 			<div class="login">
 				<form (ngSubmit) = "onSubmit(formdata.value)" >
 					<label for="chk" aria-hidden="true">Health Hub Sign In</label>
-					<input type="email" name="email" placeholder="Email" required="">
-					<input type="password" name="password" placeholder="Password" required="">
+					<input type="text" name="userName" placeholder="Username" required=true>
+					<input type="password" name="password" placeholder="Password" required=true>
 					<button>Sign In</button>
 				</form>
 			</div>
@@ -21,9 +21,9 @@
 			<div class="signup" onsubmit="false">
 				<form>
 					<label for="chk" aria-hidden="true">Sign up</label>
-					<input type="text" name="userName" placeholder="User Name" required="">
-					<input type="email" name="email" placeholder="Email" required="">
-					<input type="password" name="password" placeholder="Password" required="">
+					<input type="text" name="userName" placeholder="Username" required=true>
+					<input type="email" name="email" placeholder="Email" required=true>
+					<input type="password" name="password" placeholder="Password" required=true>
 					<button>Sign up</button>
 				</form>
 			</div>

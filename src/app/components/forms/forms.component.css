@@ -1,19 +1,21 @@
 
 body {
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
     width: 100vh;
     height: 100vh;
     align-items: center;
     text-align: center;
-    background-color: blue;
+    background-color: aqua;
+    /* background-color: blue; */
 
 }
 
 .container{
-    width: 100vh;
     margin: 0 auto;
     padding: 2px;
+    width: 100vh;
+    height: 100vh;
     justify-content: center;
     align-items: center;
 
@@ -42,6 +44,18 @@ body {
     align-items: center;
 } */
 
+.form-group{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.subBut{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .textA{
     margin: 0;
     padding: 2;
