@@ -9,19 +9,23 @@
 </head>
 <!-- <app-profile></app-profile> -->
 <body>
-    <h1>Welcome To The Profile Page</h1>
+    <div class="container">
+        <h1>Welcome To The Profile Page</h1>
 
-    <h1>{{ userName }}</h1>
-    <img src="{{ imageUrl }}" alt="{{ userName }}">
+        <h1>{{ userName }}</h1>
+        <img src="{{ imageUrl }}" alt="{{ userName }} " class="w-150px h-150px">
+    
+        <div class="profile-details">
+            <p><strong>Email:</strong> {{ email }}</p>
+            <p><strong>Phone:</strong> {{ phone }}</p>
+            <p><strong>Address:</strong> {{ address }}</p>
+        </div>
+    
+        <a href="/accountSettings">Account Settings</a>
+    
 
-    <div class="profile-details">
-        <p><strong>Email:</strong> {{ email }}</p>
-        <p><strong>Phone:</strong> {{ phone }}</p>
-        <p><strong>Address:</strong> {{ address }}</p>
     </div>
-
-    <a href="/accountSettings">Account Settings</a>
-
+    
     
 </body>
 

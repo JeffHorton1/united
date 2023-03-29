@@ -2,11 +2,11 @@
 body {
     margin: 0 auto;
     padding: 0;
-    width: 100vh;
-    height: 100vh;
-    align-items: center;
-    text-align: center;
+    display: block;
+    /* justify-content: space-between; */
     background-color: aqua;
+    align-items: center;
+
     /* background-color: blue; */
 
 }
@@ -14,13 +14,17 @@ body {
 .container{
     margin: 0 auto;
     padding: 2px;
+    display: flex;
     width: 100vh;
-    height: 100vh;
-    justify-content: center;
+    height: 80vh;
+    align-items: center;
+}
+.form-group{
+    display: flex;
+    /* justify-content: space-between; */
     align-items: center;
 
 }
-
 .ng-select.custom {
     margin: 0 auto;
     border: 1px gray;
@@ -30,8 +34,6 @@ body {
     background-color: rgb(232, 229, 225);
     /* width: 200px; */
     display: flex;
-    align-items: center;
-    justify-content: center;
     /* text-align: center; */
     margin-top: 2vh;
 }
@@ -46,23 +48,16 @@ body {
 
 .form-group{
     display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
 }
 
 .subBut{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    
 }
 .textA{
     margin: 0;
     padding: 2;
-    display: flex;
-    justify-content: center;
     margin-top: 2vh;
-    width: 60%;
+    width: 80vh;
     height: 30vh
 }
 .ng-select.custom:hover {
@@ -78,14 +73,14 @@ body {
 .btn-yellow {
     background-color: #ffff00;
     color: black;
-    margin-top: 10vh;
+    
 }
 
 .btn-red {
     background-color: red;
     color: black;
-    margin-top: 1vh;
-    margin-bottom: 1vh;
+    /* margin-top: 1vh;
+    margin-bottom: 1vh; */
 }
 
 .drop-zone {

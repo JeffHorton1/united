@@ -24,16 +24,21 @@
             
     <div class="container">
         
-        <form>
+        <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
             <div class="images">
                 <input type="file" multiple="multiple" name="images">
                 <input type="button" id="images" value="upload"
                     onclick="google.script.run.logForm(document.getElementById('uploadTest'));">
             </div>
+            <!-- <div>
+                <h3>Uploaded Images</h3>
+
+                1. {{images}} | 2. {{images}} | 3. {{images}} | 4. {{images}}
+            </div> -->
 
             <div class="form-group">
                 <label for="machine">Machine Select</label>
-                <select class="form-control" id="machine">
+                <select class="form-control" id="machine" ngModel>
                     <option>Kiosk</option>
                     <option>TSA Line</option>
                     <option>Gate</option>
@@ -42,24 +47,24 @@
 
             <div class="form-group">
                 <label for="">Text Area</label>
-                <textarea class="textA" id="comments"></textarea>
+                <textarea class="textA" id="comments" ngModel></textarea>
             </div>
             <div class="form-check">
-                <input class="form-check-input mr-40 " type="checkbox" value="green" id="green">
-                <label class="form-check-label mr-4" for="green">
+                <input class="form-check-input  " type="checkbox" value="green" id="green" ngModel>
+                <label class="form-check-label " for="green">
                     Green
                 </label>
-                <input class="form-check-input " type="checkbox" value="yellow" id="yellow">
+                <input class="form-check-input " type="checkbox" value="yellow" id="yellow" ngModel>
                 <label class="form-check-label" for="yellow">
                     Yellow
                 </label>
-                <input class="form-check-input ml-2" type="checkbox" value="red" id="red">
-                <label class="form-check-label ml-4" for="red">
+                <input class="form-check-input" type="checkbox" value="red" id="red" ngModel>
+                <label class="form-check-label " for="red">
                     Red
                 </label>
             </div>
             <div class="subBut">
-                <button type="submit" class="btn btn-primary mt-2">Submit</button>
+                <button type="submit" class="btn btn-primary mt-2" >Submit</button>
             </div>
         </form>
     </div>

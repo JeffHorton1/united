@@ -28,8 +28,15 @@ export class LoginComponent implements OnInit {
   constructor(){
 
   }
+
+  // $scope.MyFormData={
+  //   userName: "",
+  //   password: "",
+  // }
+
   ngOnInit(): void {
     throw new Error('Method not implemented.');
+    
   }
 //   ngOnInit() {
   
