@@ -11,25 +11,85 @@
 </head>
 
 <body>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-            crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-            crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 
-            
+
     <div class="container">
+
+
+
+        <!-- <mat-card class="example-card" *ngIf="!error">
+            <mat-card-header>
+              <mat-card-title> -->
+
+        <!-- </mat-card-title>
+            </mat-card-header>
         
+            <mat-card-content> -->
+
+        <!-- </mat-card-content>
+        
+            <mat-card-actions align="end"> -->
+
+        <!-- </mat-card-actions>
+        
+            <mat-card-footer>
+              
+            </mat-card-footer>
+          </mat-card> -->
         <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
-            <div class="images">
+
+
+            <div *ngIf="isCameraExist; else noCameraExist"><video [class.show]="!isCaptured" [class.hide]="isCaptured"
+                    #video id="video" [width]="WIDTH" [height]="HEIGHT" autoplay></video>
+                <!-- <canvas [class.show]="isCaptured" [class.hide]="!isCaptured" #canvas id="canvas" [width]="WIDTH"
+                [height]="HEIGHT"></canvas> -->
+                <button mat-stroked-button *ngIf="!isCaptured" (click)="capture()">
+                    Take Photo
+                </button>
+                <button mat-stroked-button *ngIf="isCaptured" (click)="removeCurrent()">
+                    Take Another
+                </button>
+            </div>
+            <div style="text-align:center">
+                <div class="webcam-image" *ngIf="webcamImage">
+                    <img [src]="webcamImage.imageAsDataUrl" />
+                </div>
+                <div class="btn-group">
+                    <button class="button" (click)="takeSnapshot()">Take Picture</button>
+                    <button class="button" (click)="changeWebCame(true)">Toggle Camera</button>
+                    <button class="button" (click)="onOffWebCame()">Switch camera</button>
+                </div> <br />
+                <webcam [height]="500" [width]="1000" [trigger]="triggerObservable" (imageCapture)="handleImage($event)"
+                    *ngIf="showWebcam" [switchCamera]="nextWebcamObservable">
+                </webcam>
+            </div>
+
+            <div *ngIf="errors.length > 0">
+                <h4>Error Messages:</h4>
+                <ul *ngFor="let error of errors">
+                    <li>{{ error | json }}</li>
+                </ul>
+            </div>
+
+
+            <ng-template #noCameraExist>
+                Camera device not available
+            </ng-template>
+            <!-- <div class="images">
+
                 <input type="file" multiple="multiple" name="images">
                 <input type="button" id="images" value="upload"
                     onclick="google.script.run.logForm(document.getElementById('uploadTest'));">
-            </div>
+            </div> -->
             <!-- <div>
                 <h3>Uploaded Images</h3>
 
@@ -64,10 +124,17 @@
                 </label>
             </div>
             <div class="subBut">
-                <button type="submit" class="btn btn-primary mt-2" >Submit</button>
+                <button type="submit" class="btn btn-primary mt-2">Submit</button>
             </div>
+            <ul>
+                <li *ngFor="let src of imageCaptures; let idx = index" (click)="setPhoto(idx)">
+                    <img [src]="src" height="60" />
+                </li>
+            </ul>
         </form>
-    </div>
+
+    </div> <!-- <video #video></video> -->
+
 </body>
 
 </html>

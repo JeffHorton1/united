@@ -1,5 +1,6 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { FormsComponent } from '../forms/forms.component';
 
 @Component({
   selector: 'app-login',
@@ -24,6 +25,8 @@ export class LoginComponent implements OnInit {
   formdata: any;
   emailid: any;
   componentproperty: any;
+
+
   
   constructor(){
 

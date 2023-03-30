@@ -12,6 +12,11 @@ import { AccountSettingsComponent } from './components/account-settings/account-
 import { MessagesComponent } from './components/messages/messages.component';
 import { NgxFileDropModule } from 'ngx-file-drop';
 import {HttpClientModule} from '@angular/common/http';
+import { GoogleMapsModule } from '@angular/google-maps';
+import { WebcamModule } from 'ngx-webcam';
+import { TableComponent } from './table/table.component';
+// import { CameraComponent } from './camera/camera.component';
+// import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -22,16 +27,23 @@ import {HttpClientModule} from '@angular/common/http';
     ProfileComponent,
     AccountSettingsComponent,
     MessagesComponent,
+    TableComponent,
     
 
   ],
   imports: [
+    // AgmCoreModule.forRoot({
+    //   apiKey: 'AIzaSyAtrDPLMu3NwIUChC99h3rXUm81AvhVHhw'
+    // }),
     BrowserModule,
     AppRoutingModule,
     NgxFileDropModule,
     HttpClientModule,
     NgSelectModule,
-    FormsModule
+    FormsModule,
+    WebcamModule,
+    GoogleMapsModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

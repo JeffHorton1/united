@@ -6,12 +6,13 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAtrDPLMu3NwIUChC99h3rXUm81AvhVHhw&callback=initMap"></script>
 </head>
 <body>
   <header>
     This is the header
   </header>
-  <app-root></app-root>
+  <app-root [data]="parentData"></app-root>
   
   <footer>
     <a href="/dashboard"><strong>Home</strong></a> | <a href="/messages"><strong>Messages</strong></a> | <a href="#"><strong>Something Else</strong> </a>

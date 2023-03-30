@@ -1,25 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <script src="./dashboard.component.ts"></script>
+    <title>Simple Map</title>
+
+
 </head>
+
 <body>
     <div class="container">
+ 
 
+        <div id="map">
+            <!-- <script> (g => { var h, a, k, p = "", c = "google", l = "importLibrary", q = "__ib__", m = document, b = window; b = b[c] || (b[c] = {}); var d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams, u = () => h || (h = new Promise(async (f, n) => { await (a = m.createElement("script")); e.set("libraries", [...r] + ""); for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]); e.set("callback", c + ".maps." + q); a.src = `https://maps.${c}apis.com/maps/api/js?` + e; d[q] = f; a.onerror = () => h = n(Error(p + " could not load.")); a.nonce = m.querySelector("script[nonce]")?.nonce || ""; m.head.append(a) })); d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)) })
+                    ({ key: "AIzaSyAtrDPLMu3NwIUChC99h3rXUm81AvhVHhw", v: "weekly" });</script> -->
+            <google-map height="60vh" width="100vh" [center]="center" [zoom]="zoom" (mapClick)="moveMap($event)"
+                (mapMousemove)="move($event)"> 
+            </google-map>
+
+            <div>Latitude: {{display?.lat}}</div>
+            <div>Longitude: {{display?.lng}}</div>
+            
+          
+             
+        </div>
+        <!-- <div id="map">
+                <google-map> </google-map>
+
+           
+        </div> -->
+
+        <!-- <agm-map [latitude]="lat" [longitude]="lng">
+            <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+          </agm-map> -->
         <h1> Welcome to The Health Hub {{userName}}</h1>
-    <div>
-        <ul>
-            <li>1st Item : {{images}}</li>
-            <li>2nd Item : {{images}}</li>
-            <li>3rd Item : {{images}}</li>
-            <li>4th Item : {{images}}</li>
-        </ul>
+        <div>
+
+
+
+            <ul>
+                <li>1st Item : {{images}}</li>
+                <li>2nd Item : {{images}}</li>
+                <li>3rd Item : {{images}}</li>
+                <li>4th Item : {{images}}</li>
+            </ul>
+        </div>
     </div>
-    </div>
-    
-    
+
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAtrDPLMu3NwIUChC99h3rXUm81AvhVHhwlibraries=visualization"></script> -->
 </body>
+
 </html>
