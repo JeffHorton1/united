@@ -14,8 +14,7 @@ export class AppComponent {
   title = 'united';
   
     
-  // users: any[];
-  
+
   constructor(private http: HttpClient) {}
 
   // ngOnInit() {

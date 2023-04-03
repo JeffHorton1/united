@@ -1,3 +1,32 @@
+body {
+    margin: 0;
+    padding: 0;
+    width: 100vh;
+    height: 100vh;
+    align-items: center;
+    text-align: center;
+    background-image: url('../../images/dashboardPlane.jpg');
+    background-position: 100%;
+    background-size: cover;
+}
+
+  ul {
+    background: #3399ff;
+    padding: 20px;
+  }
+  
+  ul li {
+    background: #cce5ff;
+    color: darkblue;
+    margin: 5px;
+  }
+  
+  h1 {
+    color: white;
+  }
+
+
+
 .container{
     margin: 0 auto;
     padding: 0;

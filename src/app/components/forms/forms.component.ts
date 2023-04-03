@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 import { NgLocalization } from '@angular/common';
 import { WebcamImage, WebcamInitError, WebcamUtil } from 'ngx-webcam';
 import { Subject, Observable } from 'rxjs';
+import { FormService } from 'src/app/services/form.service';
+import { MachineModel } from 'src/app/models/machine.model';
 
 
 @Component({
@@ -15,18 +17,55 @@ import { Subject, Observable } from 'rxjs';
 
 })
 
-// @NgModule({
-
-// })
 
 
 export class FormsComponent implements AfterViewInit {
-  trigger: any;
-  nextWebcam: any;
+  title = 'forms';
+  
+
+  constructor(private _formService: FormService ) {
+    // fetch('/my-server-endpoint', {
+    //   method: 'POST',
+    //   body: formData
+    // })
+    // .then(response => {
+    //   // handle response
+    // })
+    // .catch(error => {
+    //   // handle error
+    // });
+  }
+
+  
+  ngOnInit(): void {
+    WebcamUtil.getAvailableVideoInputs()
+      .then((mediaDevices: MediaDeviceInfo[]) => {
+        this.isCameraExist = mediaDevices && mediaDevices.length > 0;
+      });
+  }
+
+  yoForm(value: any): Observable<MachineModel>{
+    console.log(value)
+    const machines: MachineModel = new MachineModel();
+    
+    const colors= "" || [];
+    machines.machines = value.machine;
+    machines.comments = value.comments;;
+    machines.red = value.red;
+    machines.green = value.green;
+    machines.yellow = value.yellow;
+    machines.avatar = value.avatar;
+  
+    // machines.images = value.upload;
+    machines.images = value.images;
+    return this._formService.addForm(new MachineModel);
+  }
+
+  
   @ViewChild('video') video: ElementRef | undefined;
   @ViewChild('canvas') canvas: ElementRef | undefined;
   @Output() getPicture = new EventEmitter<WebcamImage>();
-
+ 
   showWebcam = true;
   isCameraExist = true;
  
@@ -37,52 +76,21 @@ export class FormsComponent implements AfterViewInit {
   
 
   // webcam snapshot trigger
-  // private trigger: Subject<void> = new Subject<void>();
-  // private nextWebcam: Subject<boolean | string> = new Subject<boolean | string>();
+  private trigger: Subject<void> = new Subject<void>();
+  private nextWebcam: Subject<boolean | string> = new Subject<boolean | string>();
 
-  // @ViewChild('video')
-  // public video!: ElementRef;
-
-  // public ngAfterViewInit(): void {
-  //   if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-  //     navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
-  //       this.video.nativeElement.srcObject = stream;
-  //       this.video.nativeElement.play();
-  //     });
-  //   }
  
-
-  constructor(
-    
-  ) {}
 
   
+
+  
+
+
+
+
+  
+
  
-
-  title = 'client';
-
-  images = "";
-
-  selectMachine!: number;
-
-  machines = [
-    { id: 1, name: 'Kiosk' },
-    { id: 2, name: 'Baggage' },
-    { id: 3, name: 'Gate' },
-    { id: 4, name: 'PSA Line' },
-  ];
-
-  myText = '';
-
-  onSubmit(form: NgForm) {
-    const machine = form.value.machine;
-    const comments = form.value.comments;
-    const red = form.value.red;
-    const green = form.value.green;
-    const yellow = form.value.yellow;
-    const images = form.value.images;
-
-  }
 
   onFilesDropped(files: File[]) {
     for (const file of files) {
@@ -91,19 +99,14 @@ export class FormsComponent implements AfterViewInit {
 
     }
   }
-  ngOnInit(): void {
-    WebcamUtil.getAvailableVideoInputs()
-      .then((mediaDevices: MediaDeviceInfo[]) => {
-        this.isCameraExist = mediaDevices && mediaDevices.length > 0;
-      });
-  }
+  
 
   takeSnapshot(): void {
     this.trigger.next();
   }
 
   onOffWebCame() {
-    this.showWebcam = !this.showWebcam;
+    this.showWebcam = this.showWebcam;
   }
 
   handleInitError(error: WebcamInitError) {
@@ -115,13 +118,11 @@ export class FormsComponent implements AfterViewInit {
   }
 
   handleImage(webcamImage: WebcamImage) {
+    this.webcamImage = webcamImage;
     this.getPicture.emit(webcamImage);
     this.showWebcam = false;
   }
-  
-  // handleImage(webcamImage: WebcamImage) {
-  //   this.webcamImage = webcamImage;
-  // }
+
 
   get triggerObservable(): Observable<void> {
     return this.trigger.asObservable();
@@ -141,9 +142,16 @@ export class FormsComponent implements AfterViewInit {
 
   
   
-  async ngAfterViewInit() {
-    await this.setupCamera();
+  async ngAfterViewInit(this: any){
+   await this.setupCamera()
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+            // const video = this.video
+            navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
+            this.video.nativeElement.srcObject = stream;
+            this.video.nativeElement.play();})}
   }
+     
+    
 
   async setupCamera() {
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
@@ -187,7 +195,9 @@ export class FormsComponent implements AfterViewInit {
       .getContext('2d')
       .drawImage(image, 0, 0, this.WIDTH, this.HEIGHT);
   }
+
+  showImage(_formService: FormService) {
+   new Image 
 }
 
-
-
+}

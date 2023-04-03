@@ -1,21 +1,23 @@
 
 body {
-    margin: 0 auto;
-    padding: 0;
-    /* justify-content: space-between; */
-    background-color: rgb(7,88,209);
     
-    width: 100vh;
-    height: 90vh;
-    /* background-color: blue; */
+        margin: 0;
+        padding: 0;
+        width: 100vh;
+        height: 100vh;
+        align-items: center;
+        text-align: center;
+        background-image: url('../../images/formsUnited.jpeg');
+        background-position: 100%;
+        background-size: cover;
+    }
+    
 
-}
 
 .container{
     margin: 0 ;
     padding: 2px;
     width: 100vh;
-
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -34,12 +36,11 @@ form{
 } 
 
 
-.form-group{
-    display: flex;
-    /* justify-content: space-between; */
+/* .form-group{
+    
     align-items: center;
 
-}
+} */
 .ng-select.custom {
     margin: 0 auto;
     border: 1px gray;
@@ -47,9 +48,9 @@ form{
     min-height: 0px;
     border-radius: 3;
     background-color: rgb(232, 229, 225);
-    /* width: 200px; */
+    width: 200px;
     display: flex;
-    /* text-align: center; */
+    text-align: center;
     margin-top: 2vh;
 }
 video {

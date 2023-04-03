@@ -24,41 +24,24 @@
 
     <div class="container">
 
+        <form class="form-group"#myForm="ngForm" (ngSubmit)="yoForm(myForm)" action="/profile" method="post"
+            enctype="multipart/form-data">
 
 
-        <!-- <mat-card class="example-card" *ngIf="!error">
-            <mat-card-header>
-              <mat-card-title> -->
+            <div *ngIf="isCameraExist; else noCameraExist">
 
-        <!-- </mat-card-title>
-            </mat-card-header>
-        
-            <mat-card-content> -->
-
-        <!-- </mat-card-content>
-        
-            <mat-card-actions align="end"> -->
-
-        <!-- </mat-card-actions>
-        
-            <mat-card-footer>
-              
-            </mat-card-footer>
-          </mat-card> -->
-        <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
-
-
-            <div *ngIf="isCameraExist; else noCameraExist"><video [class.show]="!isCaptured" [class.hide]="isCaptured"
-                    #video id="video" [width]="WIDTH" [height]="HEIGHT" autoplay></video>
-                <!-- <canvas [class.show]="isCaptured" [class.hide]="!isCaptured" #canvas id="canvas" [width]="WIDTH"
-                [height]="HEIGHT"></canvas> -->
+                <video [class.show]="!isCaptured" [class.hide]="isCaptured" #video id="avatar" [width]="WIDTH"
+                    [height]="HEIGHT" autoplay name="avatar"></video>
+                <canvas [class.show]="isCaptured" [class.hide]="!isCaptured" #canvas id="canvas" [width]="WIDTH"
+                    [height]="HEIGHT" name="avatar"></canvas>
                 <button mat-stroked-button *ngIf="!isCaptured" (click)="capture()">
-                    Take Photo
+                    Take Video
                 </button>
                 <button mat-stroked-button *ngIf="isCaptured" (click)="removeCurrent()">
                     Take Another
                 </button>
             </div>
+
             <div style="text-align:center">
                 <div class="webcam-image" *ngIf="webcamImage">
                     <img [src]="webcamImage.imageAsDataUrl" />
@@ -84,44 +67,58 @@
             <ng-template #noCameraExist>
                 Camera device not available
             </ng-template>
-            <!-- <div class="images">
-
-                <input type="file" multiple="multiple" name="images">
-                <input type="button" id="images" value="upload"
+            <div class="images">
+                <input type="file" multiple="multiple" name="avatar">
+                <input type="button" id="images" name="avatar" value="upload"
                     onclick="google.script.run.logForm(document.getElementById('uploadTest'));">
-            </div> -->
+            </div>
             <!-- <div>
                 <h3>Uploaded Images</h3>
 
-                1. {{images}} | 2. {{images}} | 3. {{images}} | 4. {{images}}
-            </div> -->
+                1. {{video}} | 2. {{video}} | 3. {{video}} | 4. {{video}}
+            </div>  -->
 
             <div class="form-group">
-                <label for="machine">Machine Select</label>
-                <select class="form-control" id="machine" ngModel>
-                    <option>Kiosk</option>
-                    <option>TSA Line</option>
-                    <option>Gate</option>
-                </select>
+                <div class="label">
+                    <label class="form-check-label" for="machines">Machine Select</label>
+                </div>
+                <div>
+                    <select class="form-control" name="machines" id="machines" ngModel>
+                        <option>Kiosk</option>
+                        <option>TSA Line</option>
+                        <option>Gate</option>
+                    </select>
+                </div>
             </div>
 
             <div class="form-group">
-                <label for="">Text Area</label>
-                <textarea class="textA" id="comments" ngModel></textarea>
+
+                <div class="label">
+                    <label class="form-check-label" for="">Text Area</label>
+                </div>
+
+                <textarea class="textA" name="comments" id="comments" ngModel></textarea>
             </div>
             <div class="form-check">
-                <input class="form-check-input  " type="checkbox" value="green" id="green" ngModel>
-                <label class="form-check-label " for="green">
-                    Green
-                </label>
-                <input class="form-check-input " type="checkbox" value="yellow" id="yellow" ngModel>
-                <label class="form-check-label" for="yellow">
-                    Yellow
-                </label>
-                <input class="form-check-input" type="checkbox" value="red" id="red" ngModel>
-                <label class="form-check-label " for="red">
-                    Red
-                </label>
+                <!-- <input class="form-check-input  " type="checkbox" name="green" value="green" id="green" ngModel>
+                <div class="label">
+                    <label class="form-check-label " for="green"> Green</label>
+                </div> -->
+                <div class="label">
+                    <label class="form-check-label" for="yellow">
+                        Yellow
+                    </label>
+                </div> 
+                <input class="form-check-input " type="checkbox" name="yellow" value="yellow" id="yellow" ngModel>
+
+                
+                <div class="label">
+                    <label class="form-check-label " for="red">
+                        Red
+                    </label>
+                </div>
+                <input class="form-check-input" type="checkbox" name="red" value="red" id="red" ngModel>
+
             </div>
             <div class="subBut">
                 <button type="submit" class="btn btn-primary mt-2">Submit</button>
@@ -132,8 +129,8 @@
                 </li>
             </ul>
         </form>
-
-    </div> <!-- <video #video></video> -->
+                    <video #video></video>
+    </div> 
 
 </body>
 

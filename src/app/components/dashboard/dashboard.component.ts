@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Data } from '@angular/router';
 
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -12,8 +13,12 @@ import { Data } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
  
+  
+  constructor(){
+    
+  }
 
-  constructor(){}
+  
    ngOnInit(){
     
   const unitedOhare = { lat: 42.345573, lng: -71.098326 };
