@@ -38,7 +38,7 @@
                     Take Video
                 </button>
                 <button mat-stroked-button *ngIf="isCaptured" (click)="removeCurrent()">
-                    Take Another
+                    Stop
                 </button>
             </div>
 
@@ -87,6 +87,7 @@
                         <option>Kiosk</option>
                         <option>TSA Line</option>
                         <option>Gate</option>
+                        <option>Baggage</option>
                     </select>
                 </div>
             </div>
@@ -100,24 +101,18 @@
                 <textarea class="textA" name="comments" id="comments" ngModel></textarea>
             </div>
             <div class="form-check">
-                <!-- <input class="form-check-input  " type="checkbox" name="green" value="green" id="green" ngModel>
-                <div class="label">
-                    <label class="form-check-label " for="green"> Green</label>
-                </div> -->
-                <div class="label">
-                    <label class="form-check-label" for="yellow">
-                        Yellow
-                    </label>
-                </div> 
-                <input class="form-check-input " type="checkbox" name="yellow" value="yellow" id="yellow" ngModel>
 
-                
-                <div class="label">
-                    <label class="form-check-label " for="red">
-                        Red
+                    <label class="form-check-label " for="green">Green               
+                    <input class="form-check-input  " type="radio"  name="group" [(ngModel)]="selectedValue" value="green" id="green" >
+                    </label> 
+
+            
+                    <label class="form-check-label" for="yellow">Yellow                
+                    <input class="form-check-input" type="radio" name="group" [(ngModel)]="selectedValue" value="yellow" id="yellow" >
                     </label>
-                </div>
-                <input class="form-check-input" type="checkbox" name="red" value="red" id="red" ngModel>
+                    <label class="form-check-label" for="red">Red  
+                    <input class="form-check-input" type="radio" name="group" [(ngModel)]="selectedValue"  value="red" id="red" >
+                    </label>
 
             </div>
             <div class="subBut">

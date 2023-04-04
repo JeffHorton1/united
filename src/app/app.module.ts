@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +15,8 @@ import {HttpClientModule} from '@angular/common/http';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { WebcamModule } from 'ngx-webcam';
 import { TableComponent } from './table/table.component';
+import { FormService } from './services/form.service';
+import { LoginService } from './services/login.service';
 
 @NgModule({
   declarations: [
@@ -37,10 +39,11 @@ import { TableComponent } from './table/table.component';
     NgSelectModule,
     FormsModule,
     WebcamModule,
-    GoogleMapsModule
+    GoogleMapsModule,
+    ReactiveFormsModule
     
   ],
-  providers: [],
+  providers: [FormService, LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

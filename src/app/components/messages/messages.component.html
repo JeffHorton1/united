@@ -12,12 +12,12 @@
 
 <body>
     <div class="container">
-        <form>
+        <form [formGroup]="form" (ngSubmit)="submitForm()">
             <div class="form-group">
                 <label for="messages">Messages</label>
-                <textarea class="messages" name="messages" id="messages"></textarea>
+                <textarea class="messages" id="messages" formControlName="messages"></textarea>
             </div>
-            <button type="submit" class="btn-outline-primary">Submit</button>
+            <button type="submit" class="btn-outline-primary" >Submit</button>
         </form>
 
     </div>

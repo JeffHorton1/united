@@ -1,11 +1,14 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Output, EventEmitter, Input } from '@angular/core';
-import { NgForm, FormsModule,FormBuilder } from '@angular/forms';
+import { NgForm, FormsModule,FormBuilder, FormGroup } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { NgLocalization } from '@angular/common';
 import { WebcamImage, WebcamInitError, WebcamUtil } from 'ngx-webcam';
 import { Subject, Observable } from 'rxjs';
 import { FormService } from 'src/app/services/form.service';
 import { MachineModel } from 'src/app/models/machine.model';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { DashboardComponent } from '../dashboard/dashboard.component';
 
 
 @Component({
@@ -17,49 +20,86 @@ import { MachineModel } from 'src/app/models/machine.model';
 
 })
 
-
+@Injectable({
+  providedIn: 'root'
+})
 
 export class FormsComponent implements AfterViewInit {
   title = 'forms';
-  
+  form: FormGroup;
+  selectedValue = null;
 
-  constructor(private _formService: FormService ) {
-    // fetch('/my-server-endpoint', {
-    //   method: 'POST',
-    //   body: formData
-    // })
-    // .then(response => {
-    //   // handle response
-    // })
-    // .catch(error => {
-    //   // handle error
-    // });
+  constructor(private _formService: FormService, private http: HttpClient, private formBuilder: FormBuilder ) {
+    this.form = this.formBuilder.group({
+      messages: "",
+
+    })
   }
 
-  
-  ngOnInit(): void {
-    WebcamUtil.getAvailableVideoInputs()
-      .then((mediaDevices: MediaDeviceInfo[]) => {
-        this.isCameraExist = mediaDevices && mediaDevices.length > 0;
-      });
-  }
-
-  yoForm(value: any): Observable<MachineModel>{
-    console.log(value)
-    const machines: MachineModel = new MachineModel();
+    yoForm(value: any): Observable<MachineModel>{
+      // if(value.red == true){
+      //   value.green && value.yellow == false;
+      //   if(value.green == true){
+      //     value.yellow && value.red == false;
+      //     if(value.yellow == true){
+      //       value.red && value.green == false;
+      //     }
+      //   }
+      // }
+    console.log(value);
     
-    const colors= "" || [];
-    machines.machines = value.machine;
-    machines.comments = value.comments;;
+    const machines: MachineModel = new MachineModel();
+    machines.machines = value.machines;
+    machines.comments = value.comments;
     machines.red = value.red;
     machines.green = value.green;
     machines.yellow = value.yellow;
     machines.avatar = value.avatar;
-  
-    // machines.images = value.upload;
     machines.images = value.images;
     return this._formService.addForm(new MachineModel);
+
+    
+    
   }
+  submitForm()
+  {
+      if(this.form.valid){
+        const formData: FormService = this.form.value;
+        this._formService.submitForm(formData).subscribe(
+          res=>{
+            console.log('Form submitted successfully');
+            this.form.reset();
+          },
+          err=>{
+            console.log('Error')
+          }
+        )
+      }
+      
+  };
+ 
+  onSubmit(form: NgForm){
+    const machines = form.value.machines;
+    const images = form.value.images;
+    const yellow = form.value.yellow;
+    const red = form.value.red;
+    
+    
+  }
+  
+  ngOnInit(): void {
+    
+    
+    WebcamUtil.getAvailableVideoInputs()
+      .then((mediaDevices: MediaDeviceInfo[]) => {
+        this.isCameraExist = mediaDevices && mediaDevices.length > 0;
+      });
+
+    
+  }
+
+  
+ 
 
   
   @ViewChild('video') video: ElementRef | undefined;

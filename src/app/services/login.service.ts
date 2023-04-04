@@ -11,7 +11,7 @@ export class LoginService{
 
     private allEmployees =[
         {
-            "id": 1,
+            "id": "",
             "images": [],
             "password" : "password1",
             "email": "jeff@mail.com",
@@ -25,12 +25,12 @@ export class LoginService{
 
 
     public addEmployees(employeeModel: EmployeeModel): Observable<EmployeeModel>{{
-        return this._httpClient.post<EmployeeModel>('http://localhost:4200/api/login', employeeModel);
+        return this._httpClient.post<EmployeeModel>('http://localhost:3000/united/login', employeeModel);
         
     }}
 
-    public getEmployees(): Observable<EmployeeModel> {
-        return this._httpClient.get<EmployeeModel>('https://localhost:4200/api/login');}
+    public getEmployees(): Observable<EmployeeModel[]> {
+        return this._httpClient.get<EmployeeModel[]>('https://localhost:3000/untied/login');}
 
       
     // public recentForms(): any[] {
