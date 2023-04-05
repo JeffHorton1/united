@@ -13,20 +13,20 @@
 
 <body>
     <div class="container">
- 
 
+        <h1> Welcome To United's Health Hub </h1>
         <div id="map">
             <!-- <script> (g => { var h, a, k, p = "", c = "google", l = "importLibrary", q = "__ib__", m = document, b = window; b = b[c] || (b[c] = {}); var d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams, u = () => h || (h = new Promise(async (f, n) => { await (a = m.createElement("script")); e.set("libraries", [...r] + ""); for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]); e.set("callback", c + ".maps." + q); a.src = `https://maps.${c}apis.com/maps/api/js?` + e; d[q] = f; a.onerror = () => h = n(Error(p + " could not load.")); a.nonce = m.querySelector("script[nonce]")?.nonce || ""; m.head.append(a) })); d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)) })
                     ({ key: "AIzaSyAtrDPLMu3NwIUChC99h3rXUm81AvhVHhw", v: "weekly" });</script> -->
             <google-map height="60vh" width="100vh" [center]="center" [zoom]="zoom" (mapClick)="moveMap($event)"
-                (mapMousemove)="move($event)"> 
+                (mapMousemove)="move($event)">
             </google-map>
 
-            <div>Latitude: {{display?.lat}}</div>
-            <div>Longitude: {{display?.lng}}</div>
-            
-          
-             
+            <div><strong>Latitude:</strong> {{display?.lat}}</div>
+            <div><strong>Longitude:</strong> {{display?.lng}}</div>
+
+
+
         </div>
         <!-- <div id="map">
                 <google-map> </google-map>
@@ -37,20 +37,25 @@
         <!-- <agm-map [latitude]="lat" [longitude]="lng">
             <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
           </agm-map> -->
-        <h1> Welcome to The Health Hub {{userName}}</h1>
+
         <div>
 
 
 
             <ul>
-                <li>1st Item : Kiosk </li>
-                <li>2nd Item : TSA Line</li>
-                <li>3rd Item : Kiosk</li>
-                <li>4th Item : Baggage</li>
+                <label>
+                    <h2><strong>Where We Care, Urgently</strong></h2>
+                    <li><strong><a href="">Kiosk</a></strong>  </li>
+                    <li><strong><a href="">TSA Line</a></strong></li>
+                    <li><strong><a href="">Kiosk</a></strong></li>
+                    <li><strong><a href="">Baggage</a></strong></li>
+                </label>
             </ul>
         </div>
     </div>
-
+    <footer>
+        <a href="/profile"><strong>Profile</strong></a> | <a href="/forms"><strong>Create Ticket</strong></a> | <a href="#"><strong></strong> </a>
+      </footer>
     <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAtrDPLMu3NwIUChC99h3rXUm81AvhVHhwlibraries=visualization"></script> -->
 </body>
 

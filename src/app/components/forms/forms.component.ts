@@ -9,7 +9,8 @@ import { MachineModel } from 'src/app/models/machine.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { DashboardComponent } from '../dashboard/dashboard.component';
-
+import { Router } from '@angular/router';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-forms',
@@ -26,14 +27,32 @@ import { DashboardComponent } from '../dashboard/dashboard.component';
 
 export class FormsComponent implements AfterViewInit {
   title = 'forms';
-  form: FormGroup;
+  form: FormGroup; 
   selectedValue = null;
+  public employees: any;
+  tickets: any[]=[];
 
-  constructor(private _formService: FormService, private http: HttpClient, private formBuilder: FormBuilder ) {
+  ticketObj: any= {
+    _id:"",
+    machines:'',
+    comments: '',
+    group: '',
+    red: false,
+    green: false,
+    yellow: false,
+    images: "",
+
+  }
+
+
+  constructor(private _formService: FormService, private http: HttpClient, private formBuilder: FormBuilder, private router: Router,private _loginService: LoginService ) {
     this.form = this.formBuilder.group({
       messages: "",
+      
 
-    })
+    });
+    
+    this.employees = _loginService.getUser()
   }
 
     yoForm(value: any): Observable<MachineModel>{
@@ -56,11 +75,37 @@ export class FormsComponent implements AfterViewInit {
     machines.yellow = value.yellow;
     machines.avatar = value.avatar;
     machines.images = value.images;
+    this.http.post('forms', MachineModel ). subscribe(
+    (response: any) => {
+      localStorage.setItem('token', response.token);
+      this.router.navigate(['/dashboard']);
+    },
+    (error) => {
+      console.log(error);
+    });
     return this._formService.addForm(new MachineModel);
+    
 
     
     
   }
+
+  submit(){
+    this.tickets.push(this.ticketObj);
+    localStorage.setItem('tickets', JSON.stringify(this.tickets));
+    this.ticketObj = {
+      _id:"",
+    machines:'',
+    comments: '',
+    group: '',
+    red: false,
+    green: false,
+    yellow: false,
+    images: "",
+    };
+    this.router.navigate(['/dashboard'])
+  }
+
   submitForm()
   {
       if(this.form.valid){

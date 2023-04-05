@@ -4,6 +4,7 @@ import { FormService } from 'src/app/services/form.service';
 import { LoginService } from 'src/app/services/login.service';
 import { EmployeeModel } from 'src/app/models/employees.model';
 import { MachineModel } from 'src/app/models/machine.model';
+import { LoginComponent } from '../login/login.component';
 
 
 
@@ -17,14 +18,18 @@ import { MachineModel } from 'src/app/models/machine.model';
 
 })
 export class DashboardComponent implements OnInit {
+  public user: any;
 
+ 
  forms: MachineModel[] = [];
 
-  constructor(private _formService: FormService) { }
+  constructor(private _formService: FormService, private _loginService: LoginService) { 
+    this.user = _loginService.getUser();
+  }
 
 
   ngOnInit() {
-
+ 
     // this._formService.getForms().subscribe(forms => {
     //   this.forms = forms;
     // });

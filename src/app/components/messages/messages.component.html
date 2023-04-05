@@ -15,12 +15,15 @@
         <form [formGroup]="form" (ngSubmit)="submitForm()">
             <div class="form-group">
                 <label for="messages">Messages</label>
-                <textarea class="messages" id="messages" formControlName="messages"></textarea>
+                <textarea class="messages" id="messages" formControlName="messages" [(ngModel)]="messageObj.messages"></textarea>
             </div>
-            <button type="submit" class="btn-outline-primary" >Submit</button>
+            <button type="submit" class="btn-outline-primary" (click)="submit()" >Submit</button>
         </form>
 
     </div>
+    <footer>
+        <a href="/dashboard"><strong>Home</strong></a> | <a href="/forms"><strong>Create Ticket</strong></a> | <a href="/profile"><strong>Profile</strong> </a>
+      </footer>
 </body>
 
 </html>

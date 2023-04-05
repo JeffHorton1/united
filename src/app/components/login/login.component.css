@@ -1,8 +1,8 @@
 body{
 	margin: 0;
 	padding: 0;
-	font-family: 'Jost', sans-serif;
-	background: linear-gradient(to bottom, white, rgb(7,88,209), rgb(7,88,209));
+	font-family: zurich-black-extended;
+	background:  rgb(7,88,209);
 }
 .main{
 	width: 100vh;
@@ -14,7 +14,8 @@ body{
 	box-shadow: 5px 20px 50px #000;
 	
 	
-}
+ }
+/*  
 #chk{
 	display: none;
 }
@@ -71,24 +72,9 @@ button{
 button:hover{
 	background: rgb(7,88,209);
 }
-.signup{
-	height: 460px;
-	background: #eee;
-	border-radius: 60% / 10%;
-	transform: translateY(-180px);
-	transition: .8s ease-in-out;
-}
+
 .signup label{
 	color: rgb(7,88,209);
 	transform: scale(.6);
 }
-
-#chk:checked ~ .signup{
-	transform: translateY(-500px);
-}
-#chk:checked ~ .signup label{
-	transform: scale(1);	
-}
-#chk:checked ~ .signup label{
-	transform: scale(.6);
-}
+  */

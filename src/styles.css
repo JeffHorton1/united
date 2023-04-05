@@ -22,8 +22,7 @@ body {
 footer {
     margin: 0;
     padding: 8px;
-    border: solid;
-    border-color: black;
+    background-color: white;
     text-align: center;
 
 }

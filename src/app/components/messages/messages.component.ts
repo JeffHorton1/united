@@ -8,6 +8,7 @@ import { FormService } from 'src/app/services/form.service';
 
 
 
+
 @Component({
   selector: 'app-messages',
   templateUrl: './messages.component.html',
@@ -22,21 +23,14 @@ import { FormService } from 'src/app/services/form.service';
 
 export class MessagesComponent implements OnInit {
   form: FormGroup;
-
   items = this._formService.getForms;
-
-
   submitted = false;
+  messages: any[]=[];
 
-  messages: MessageModel = 
-  {
-    _id: "",
-    messages: [""]
+  messageObj: any ={
+    messages:'',
   }
-  
-
-
-  constructor(private _formService: FormService,private formBuilder: FormBuilder){
+  constructor(private router: Router, private _formService: FormService,private formBuilder: FormBuilder){
     this.form = this.formBuilder.group({
       messages: "",
 
@@ -44,7 +38,14 @@ export class MessagesComponent implements OnInit {
   }
 
 
-
+submit(){
+    this.messages.push(this.messageObj);
+    localStorage.setItem('messages', JSON.stringify(this.messages));
+    this.messageObj = {
+      messages: "",
+    };
+    this.router.navigate(['/messages'])
+  }
    
   submitForm()
   {

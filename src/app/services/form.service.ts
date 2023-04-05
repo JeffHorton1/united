@@ -10,6 +10,14 @@ import axios from "axios";
 })
 
 export class FormService{
+    tickets: any[] = [];
+    
+  ticketObj: any= {
+    machines:'',
+    comments: '',
+    group: '',
+  }
+
     
     private apiUrl = 'http://localhost:3000/united/messages';
 

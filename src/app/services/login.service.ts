@@ -7,32 +7,55 @@ import { EmployeeModel } from "../models/employees.model";
     "providedIn": "root"
 })
 
-export class LoginService{
+export class LoginService {
 
-    private allEmployees =[
+    private allEmployees = [
         {
             "id": "",
             "images": [],
-            "password" : "password1",
-            "email": "jeff@mail.com",
-            "messages": "we love it here",
-            
+            "password": "",
+            "email": "",
+            "messages": "",
+
 
         }
     ]
-  
-    constructor(private _httpClient: HttpClient){}
+
+    private user: any = null;
+
+    // Call this method when the user logs in
+    public setUser(user: any) {
+        this.user = user;
+    }
+
+    // Call this method when the user logs out
+    public clearUser() {
+        this.user = null;
+    }
+
+    public getUser() {
+        return this.user;
+    }
+
+    public isLoggedIn() {
+        return this.user !== null;
+    }
+
+    constructor(private _httpClient: HttpClient) { }
 
 
-    public addEmployees(employeeModel: EmployeeModel): Observable<EmployeeModel>{{
-        return this._httpClient.post<EmployeeModel>('http://localhost:3000/united/login', employeeModel);
-        
-    }}
+    public addEmployees(employeeModel: EmployeeModel): Observable<EmployeeModel> {
+        {
+            return this._httpClient.post<EmployeeModel>('http://localhost:3000/united/login', employeeModel);
+
+        }
+    }
 
     public getEmployees(): Observable<EmployeeModel[]> {
-        return this._httpClient.get<EmployeeModel[]>('https://localhost:3000/untied/login');}
+        return this._httpClient.get<EmployeeModel[]>('https://localhost:3000/untied/login');
+    }
 
-      
+
     // public recentForms(): any[] {
 
     // }

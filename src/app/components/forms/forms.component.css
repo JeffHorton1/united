@@ -29,18 +29,22 @@ form {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+
 
 }
 
 
-.label {
+label {
+
+    display: flex;
+
+
+}
+
+.form-check {
     margin: 0;
-    display: inline-flex;
-    justify-content: center;
+    align-items: center;
 }
-
-.form-check input {}
 
 /* .form-group{
     
@@ -67,7 +71,9 @@ video {
 }
 
 
-.subBut {}
+.subBut {
+    margin-top: 20px;
+}
 
 .textA {
     margin: 0;

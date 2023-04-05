@@ -3,28 +3,27 @@
 <head>
 	<title>Slide Navbar</title>
 	<link rel="stylesheet" type="style" href="/client/src/app/login/login.component.css">
-	<link href="https://fonts.googleapis.com/css2?family=Jostcss:wght@500&display=swap" rel="stylesheet">
+	
 </head>
 <body>
 	<div class="main">  	
-		<input type="checkbox" id="chk" aria-hidden="true">
 
 			<div class="login">
-				<form #myform="ngForm" ngSubmit="onSubmit" >
+				<form #myform="ngForm" (ngSubmit)="onSubmit" >
 					<label for="chk" aria-hidden="true">Health Hub Sign In</label>
-					<input type="text" name="userName" placeholder="Username" required=true ngModel>
-					<input type="password" name="password" placeholder="Password" required=true ngModel>
-					<button type="submit">Sign In</button>
+					<input type="text" name="userName" placeholder="Username" required=true [(ngModel)]="loginObj.userName">
+					<input type="password" name="password" placeholder="Password" required=true [(ngModel)]="loginObj.password">
+					<button type="submit" (click)="onLogin()"  >Sign In</button>
 				</form>
 			</div>
 
 			<div class="signup" onsubmit="false">
 				<form #myform="ngForm" ngSubmit="onRegister">
 					<label for="chk" aria-hidden="true">Sign up</label>
-					<input type="text" name="userName" placeholder="Username" required=true ngModel>
-					<input type="email" name="email" placeholder="Email" required=true ngModel>
-					<input type="password" name="password" placeholder="Password" required=true ngModel>
-					<button type="submit">Sign up</button>
+					<input type="text" name="userName" placeholder="Username" required=true [(ngModel)]="signupObj.userName">
+					<input type="email" name="email" placeholder="Email" required=true [(ngModel)]="signupObj.email">
+					<input type="password" name="password" placeholder="Password" required=true [(ngModel)]="signupObj.password">
+					<button type="submit" (click)="onSignUp()">Sign up</button>
 				</form>
 			</div>
 	</div>
