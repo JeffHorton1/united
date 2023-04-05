@@ -12,6 +12,54 @@ body {
 }
 
 
+.form-group{
+    margin-top: 6px;
+}
+
+header{
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+.button-container{
+    width: 100vh;
+    display: flex;
+    justify-content: space-evenly;
+    position: relative;
+    align-items: center;
+    margin: 0;
+    
+    margin-bottom: 4px;
+}
+
+.green-button {
+    background-color: green;
+    color: White;
+    width: 20%;
+}
+
+
+.yellow-button {
+    background-color: yellow;
+    color: #333;
+    width: 20%;
+}
+
+.red-button {
+    background-color: red;
+    color: #fff;
+    width: 20%;
+}
+
 .container {
     margin: 0;
     padding: 2px;
@@ -37,9 +85,11 @@ form {
 label {
 
     display: flex;
-
+    color: white;
+    text-decoration: bold;
 
 }
+
 
 .form-check {
     margin: 0;
@@ -65,7 +115,7 @@ label {
 }
 
 video {
-    width: 20vh;
+    width: 50%;
     height: 20vh;
     object-fit: cover;
 }

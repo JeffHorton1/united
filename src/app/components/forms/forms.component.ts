@@ -91,18 +91,27 @@ export class FormsComponent implements AfterViewInit {
   }
 
   submit(){
-    this.tickets.push(this.ticketObj);
-    localStorage.setItem('tickets', JSON.stringify(this.tickets));
+    
     this.ticketObj = {
       _id:"",
-    machines:'',
-    comments: '',
-    group: '',
-    red: false,
-    green: false,
-    yellow: false,
-    images: "",
-    };
+      terminal: null,
+      
+      machines:'',
+      comments: '',
+      section:"",
+      group: '',
+      red: false,
+      green: false,
+      yellow: false,
+      images: "",
+      };
+    this.tickets.push(this.ticketObj);
+    const isTicketExists = this.tickets.find(t => t.id === this.ticketObj._id && t.name == this.ticketObj.machines && t.terminal == this.ticketObj.terminal && t.section == this.ticketObj.section);
+    if(isTicketExists != undefined){
+      alert("Ticket Successfully Created !")
+    }
+    localStorage.setItem('tickets', JSON.stringify(this.tickets));
+    
     this.router.navigate(['/dashboard'])
   }
 

@@ -17,6 +17,8 @@ body {
 }
     
 .form-group {
+
+    
     display: flex;
     flex-direction: column;
 }
@@ -28,10 +30,18 @@ body {
     justify-content: center;
     width: 50%;
     height: 50vh;
+    margin-top: 60px;
 }
 .form-group label {
     font-weight: bold;
     color:#fff;
 }
+.btn{
+    width: 20%;
+    color: white
+}
 
-
+footer{
+    display: flex;
+    justify-content: space-evenly;
+  }

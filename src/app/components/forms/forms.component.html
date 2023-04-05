@@ -8,10 +8,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-</head>
-
-<body>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+ <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
@@ -20,15 +17,21 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+    </head>
+<header>
+    <a href="/dashboard"><strong><img class="homeIcon" src="../../../assets/home.png"></strong> </a>    <a  href="/profile"><img class="userIcon" src="../../../assets/user.png"> </a> <a href="/messages"><strong><img class="messageIcon"src="../../../assets/message.png"></strong></a>
+        </header>
+<body>
+   
 
 
     <div class="container">
 
-        <form class="form-group"#myForm="ngForm" (ngSubmit)="yoForm(myForm)" action="/profile" method="post"
+        <form class="form-group" #myForm="ngForm" (ngSubmit)="yoForm(myForm)" action="/profile" method="post"
             enctype="multipart/form-data">
- <div class="form-group">
+            <div class="form-group">
                 <div class="label">
-                    <label class="form-check-label" for="terminal">Terminall</label>
+                    <label class="form-check-label" for="terminal"><strong>Terminal</strong></label>
                 </div>
                 <div>
                     <select class="form-control" name="terminal" id="terminal" ngModel>
@@ -39,7 +42,7 @@
                     </select>
                 </div>
                 <div class="label">
-                    <label class="form-check-label" for="section">Section</label>
+                    <label class="form-check-label" for="section"><strong>Section</strong></label>
                 </div>
                 <div>
                     <select class="form-control" name="section" id="section" ngModel>
@@ -60,7 +63,7 @@
                 </div>
                 <div>
                     <div class="label">
-                        <label class="form-check-label" for="machines">Machine Select</label>
+                        <label class="form-check-label" for="machines"><strong>Machine Select</strong></label>
                     </div>
                     <select class="form-control" name="machines" id="machines" ngModel>
                         <option>Kiosk</option>
@@ -73,30 +76,27 @@
 
             <div class="form-group">
                 <div class="label">
-                    <label class="form-check-label" for="">Leave A Description</label>
+                    <label class="form-check-label" for=""><strong>Leave A Description</strong></label>
                 </div>
 
                 <textarea class="textA" name="comments" id="comments" [(ngModel)]="ticketObj.messages"></textarea>
             </div>
             <div class="form-check">
-                    <label class="form-check-label " for="green">Green</label> 
-                    <input class="form-check-input  " type="radio"  name="green" [(ngModel)]="ticketObj.green" value="green" id="green" >
-
-                    <label class="form-check-label" for="yellow">Yellow</label>
-                    <input class="form-check-input" type="radio" name="yellow" [(ngModel)]="ticketObj.yellow" value="yellow" id="yellow" >
-
-                    <label class="form-check-label" for="red">Red</label>  
-                    <input class="form-check-input" type="radio" name="red" [(ngModel)]="ticketObj.red"  value="red" id="red" >
+                <div class="button-container">
+                    <button class="red-button" type="radio" [(ngModel)]="ticketObj.red"  value="red" id="red"> Red</button>
+                    <button class="yellow-button" type="radio" [(ngModel)]="ticketObj.yellow" value="yellow" id="yellow"> Yellow</button>
+                    <button class="green-button" type="radio" [(ngModel)]="ticketObj.green" value="green" id="green"> Green</button>
+                </div>
 
             </div>
-            
+
 
             <div *ngIf="isCameraExist; else noCameraExist">
 
-                <video [class.show]="!isCaptured" [class.hide]="isCaptured" #video id="avatar" [width]="WIDTH"
+                <!-- <video [class.show]="!isCaptured" [class.hide]="isCaptured" #video id="avatar" [width]="WIDTH"
                     [height]="HEIGHT" autoplay name="avatar"></video>
                 <canvas [class.show]="isCaptured" [class.hide]="!isCaptured" #canvas id="canvas" [width]="WIDTH"
-                    [height]="HEIGHT" name="avatar"></canvas>
+                    [height]="HEIGHT" name="avatar"></canvas> -->
                 <button mat-stroked-button *ngIf="!isCaptured" (click)="capture()">
                     Take Video
                 </button>
@@ -150,12 +150,10 @@
                 </li>
             </ul>
         </form>
-                    <video #video></video>
-                    <footer>
-                        <a href="/dashboard"><strong>Home</strong></a> | <a href="/profile"><strong>Profile</strong></a> | <a href="/messages"><strong>Messages</strong> </a>
-                      </footer>
-    </div> 
+        <video #video></video>
+       
+    </div>
 
 </body>
-
+        
 </html>
