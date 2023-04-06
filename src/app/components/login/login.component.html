@@ -3,27 +3,31 @@
 <head>
 	<title>Slide Navbar</title>
 	<link rel="stylesheet" type="style" href="/client/src/app/login/login.component.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	
 </head>
 <body>
 	<div class="main">  	
-
+				<h1><strong>Welcome To United Health Hub</strong></h1>
 			<div class="login">
+				
 				<form #myform="ngForm" (ngSubmit)="onSubmit" >
-					<label for="chk" aria-hidden="true">Health Hub Sign In</label>
-					<input type="text" name="userName" placeholder="Username" required=true [(ngModel)]="loginObj.userName">
-					<input type="password" name="password" placeholder="Password" required=true [(ngModel)]="loginObj.password">
-					<button type="submit" (click)="onLogin()" >Sign In</button>
+					<div><label for="chk" aria-hidden="true"><strong>Sign In</strong> </label></div>
+					<div><input type="text" name="userName" placeholder="Username" required=true [(ngModel)]="loginObj.userName"></div>
+					<div><input type="password" name="password" placeholder="Password" required=true [(ngModel)]="loginObj.password"></div>
+					<div><button class="btn btn-outline-primary"type="submit" (click)="onLogin()" ><strong>Sign In</strong></button></div>
+					
 				</form>
 			</div>
 
 			<div class="signup" onsubmit="false">
 				<form #myform="ngForm" ngSubmit="onRegister">
-					<label for="chk" aria-hidden="true">Sign up</label>
-					<input type="text" name="userName" placeholder="Username" required=true [(ngModel)]="signupObj.userName">
-					<input type="email" name="email" placeholder="Email" required=true [(ngModel)]="signupObj.email">
-					<input type="password" name="password" placeholder="Password" required=true [(ngModel)]="signupObj.password">
-					<button type="submit" (click)="onSignUp()">Sign up</button>
+					<div><label for="chk" aria-hidden="true"><strong>Sign up</strong></label></div>
+					<div><input type="text" name="userName" placeholder="Username" required=true [(ngModel)]="signupObj.userName"></div>
+					<div><input type="email" name="email" placeholder="Email" required=true [(ngModel)]="signupObj.email"></div>
+					<div><input type="password" name="password" placeholder="Password" required=true [(ngModel)]="signupObj.password"></div>
+					<div><button class="btn btn-outline-primary"type="submit" (click)="onSignUp()"><strong>Sign Up</strong></button></div>
 				</form>
 			</div>
 	</div>
