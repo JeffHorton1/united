@@ -14,7 +14,9 @@
     <div class="container">
         <form [formGroup]="form" (ngSubmit)="submitForm()">
             <div class="form-group">
-                <label for="messages">Messages</label>
+                
+                <label for="messages"><h1><strong>Messages</strong></h1></label>
+                <input type="text" id="sending" formControlname="sending"class="form-control" placeholder="Sending to who?" [(ngModel)]="messageObj.sending"/>
                 <textarea class="messages" id="messages" formControlName="messages"
                     [(ngModel)]="messageObj.messages"></textarea>
             </div>

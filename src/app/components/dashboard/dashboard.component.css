@@ -11,7 +11,7 @@ body {
 }
 
 .button-term1 {
-  background-color: yellow;
+  background-color: green;
   color: #333;
   width: 20%;
 }
@@ -21,7 +21,11 @@ body {
   color: #333;
   width: 20%;
 }
-
+.termLab{
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 5px;
+}
 .button-term3 {
   background-color: red;
   color: #333;
@@ -60,7 +64,7 @@ body {
   }
 
   .butLabel{
-    margin-top: 40px;
+    margin-top: 30px;
     color: white;
     text-decoration: solid;
     text-align: center;

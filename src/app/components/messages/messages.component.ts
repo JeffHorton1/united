@@ -29,10 +29,12 @@ export class MessagesComponent implements OnInit {
 
   messageObj: any ={
     messages:'',
+    sending: '',
   }
   constructor(private router: Router, private _formService: FormService,private formBuilder: FormBuilder){
     this.form = this.formBuilder.group({
       messages: "",
+      sending: "",
 
     })
   }
@@ -43,6 +45,7 @@ submit(){
     localStorage.setItem('messages', JSON.stringify(this.messages));
     this.messageObj = {
       messages: "",
+      sending: ""
     };
     this.router.navigate(['/messages'])
   }

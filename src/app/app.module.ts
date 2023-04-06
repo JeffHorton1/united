@@ -17,6 +17,7 @@ import { WebcamModule } from 'ngx-webcam';
 import { TableComponent } from './table/table.component';
 import { FormService } from './services/form.service';
 import { LoginService } from './services/login.service';
+import { CameraComponent } from './camera/camera.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { LoginService } from './services/login.service';
     AccountSettingsComponent,
     MessagesComponent,
     TableComponent,
+    CameraComponent,
     
 
   ],
