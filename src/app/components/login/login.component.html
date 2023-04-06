@@ -9,14 +9,14 @@
 </head>
 <body>
 	<div class="main">  	
-				<h1><strong>Welcome To United Health Hub</strong></h1>
+				<h1><strong>United Health Hub</strong></h1>
 			<div class="login">
 				
 				<form #myform="ngForm" (ngSubmit)="onSubmit" >
 					<div><label for="chk" aria-hidden="true"><strong>Sign In</strong> </label></div>
 					<div><input type="text" name="userName" placeholder="Username" required=true [(ngModel)]="loginObj.userName"></div>
 					<div><input type="password" name="password" placeholder="Password" required=true [(ngModel)]="loginObj.password"></div>
-					<div><button class="btn btn-outline-primary"type="submit" (click)="onLogin()" ><strong>Sign In</strong></button></div>
+					<div><button class="btn btn-light"type="submit" (click)="onLogin()" ><strong>Sign In</strong></button></div>
 					
 				</form>
 			</div>
@@ -27,7 +27,7 @@
 					<div><input type="text" name="userName" placeholder="Username" required=true [(ngModel)]="signupObj.userName"></div>
 					<div><input type="email" name="email" placeholder="Email" required=true [(ngModel)]="signupObj.email"></div>
 					<div><input type="password" name="password" placeholder="Password" required=true [(ngModel)]="signupObj.password"></div>
-					<div><button class="btn btn-outline-primary"type="submit" (click)="onSignUp()"><strong>Sign Up</strong></button></div>
+					<div><button class="btn btn-light"type="submit" (click)="onSignUp()"><strong>Sign Up</strong></button></div>
 				</form>
 			</div>
 	</div>

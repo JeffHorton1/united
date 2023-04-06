@@ -17,19 +17,19 @@ body {
 }
 
 .button-term2 {
-  background-color: red;
-  color: #fff;
-  width: 20%;
-}
-
-.button-term3 {
   background-color: yellow;
   color: #333;
   width: 20%;
 }
-.button-term5 {
+
+.button-term3 {
   background-color: red;
-  color: #fff;
+  color: #333;
+  width: 20%;
+}
+.button-term5 {
+  background-color: yellow;
+  color: #333;
   width: 20%;
 }
 
