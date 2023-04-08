@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Output, EventEmitter, Input } from '@angular/core';
+import * as THREE from 'three';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Output, EventEmitter, Input, NgModule } from '@angular/core';
 import { NgForm, FormsModule,FormBuilder, FormGroup } from '@angular/forms';
-import { NgModule } from '@angular/core';
 import { NgLocalization } from '@angular/common';
 import { WebcamImage, WebcamInitError, WebcamUtil } from 'ngx-webcam';
 import { Subject, Observable } from 'rxjs';
@@ -12,13 +12,12 @@ import { DashboardComponent } from '../dashboard/dashboard.component';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
 
+
 @Component({
   selector: 'app-forms',
   templateUrl: './forms.component.html',
   template: ' <app-forms [data]="parentData"></app-forms>',
   styleUrls: ['./forms.component.css'],
- 
-
 })
 
 @Injectable({
@@ -26,6 +25,21 @@ import { LoginService } from 'src/app/services/login.service';
 })
 
 export class FormsComponent implements AfterViewInit {
+
+  
+  // const scene = new THREE.Scene();
+  // const camera = new THREE.PerspectiveCamera(75, this.elementRef.nativeElement.clientWidth / this.elementRef.nativeElement.clientHeight, 0.1, 1000);
+  // camera.position.z = 5;
+
+  // camera.position.x = 0;
+  // camera.position.y = 0;
+  // camera.position.z = 5;
+  
+  // const geometry = new THREE.BoxGeometry();
+  // const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+  // const cube = new THREE.Mesh(geometry, material);
+  // scene.add(cube);
+
   title = 'forms';
   form: FormGroup; 
   selectedValue = null;
@@ -43,9 +57,9 @@ export class FormsComponent implements AfterViewInit {
     images: "",
 
   }
+ 
 
-
-  constructor(private _formService: FormService, private http: HttpClient, private formBuilder: FormBuilder, private router: Router,private _loginService: LoginService ) {
+  constructor(private elementRef: ElementRef, private _formService: FormService, private http: HttpClient, private formBuilder: FormBuilder, private router: Router,private _loginService: LoginService ) {
     this.form = this.formBuilder.group({
       messages: "",
       
@@ -115,6 +129,8 @@ export class FormsComponent implements AfterViewInit {
     this.router.navigate(['/dashboard'])
   }
 
+  
+
   submitForm()
   {
       if(this.form.valid){
@@ -131,7 +147,7 @@ export class FormsComponent implements AfterViewInit {
       }
       
   };
- 
+
   onSubmit(form: NgForm){
     const machines = form.value.machines;
     const images = form.value.images;
@@ -143,26 +159,26 @@ export class FormsComponent implements AfterViewInit {
   
   ngOnInit(): void {
     
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+      renderer.setSize(this.elementRef.nativeElement.clientWidth, this.elementRef.nativeElement.clientHeight);
+      this.elementRef.nativeElement.appendChild(renderer.domElement);
     
     WebcamUtil.getAvailableVideoInputs()
       .then((mediaDevices: MediaDeviceInfo[]) => {
         this.isCameraExist = mediaDevices && mediaDevices.length > 0;
       });
-
-    
   }
 
   
- 
 
   
   @ViewChild('video') video: ElementRef | undefined;
   @ViewChild('canvas') canvas: ElementRef | undefined;
   @Output() getPicture = new EventEmitter<WebcamImage>();
- 
+
   showWebcam = true;
   isCameraExist = true;
- 
+
   errors: WebcamInitError[] = [];
   webcamImage: WebcamImage | undefined;
   
@@ -172,29 +188,13 @@ export class FormsComponent implements AfterViewInit {
   // webcam snapshot trigger
   private trigger: Subject<void> = new Subject<void>();
   private nextWebcam: Subject<boolean | string> = new Subject<boolean | string>();
-
- 
-
   
-
-  
-
-
-
-
-  
-
- 
-
   onFilesDropped(files: File[]) {
     for (const file of files) {
       // Do something with the file
-
-
     }
   }
   
-
   takeSnapshot(): void {
     this.trigger.next();
   }
@@ -237,14 +237,14 @@ export class FormsComponent implements AfterViewInit {
   
   
   async ngAfterViewInit(this: any){
-   await this.setupCamera()
+    await this.setupCamera()
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
             // const video = this.video
             navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
             this.video.nativeElement.srcObject = stream;
             this.video.nativeElement.play();})}
   }
-     
+  
     
 
   async setupCamera() {

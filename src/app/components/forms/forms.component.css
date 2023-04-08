@@ -52,6 +52,7 @@ button {
 
 select{
     width: 50%;
+    text-align: center;
 }
 
 .yellow-button {

@@ -46,6 +46,7 @@
                 </div>
                 
                     <select class="form-control" name="section" id="section" ngModel>
+                        <option>Lobby</option>
                         <option>A</option>
                         <option>B</option>
                         <option>C</option>
@@ -93,15 +94,15 @@
 
             <div *ngIf="isCameraExist; else noCameraExist">
 
-                <!-- <video [class.show]="!isCaptured" [class.hide]="isCaptured" #video id="avatar" [width]="WIDTH"
+                <video [class.show]="!isCaptured" [class.hide]="isCaptured" #video id="avatar" [width]="WIDTH"
                     [height]="HEIGHT" autoplay name="avatar"></video>
                 <canvas [class.show]="isCaptured" [class.hide]="!isCaptured" #canvas id="canvas" [width]="WIDTH"
-                    [height]="HEIGHT" name="avatar"></canvas> -->
+                    [height]="HEIGHT" name="images"></canvas>
                 <button mat-stroked-button *ngIf="!isCaptured" (click)="capture()">
-                    Take Video
+                    Take Photo
                 </button>
                 <button mat-stroked-button *ngIf="isCaptured" (click)="removeCurrent()">
-                    Stop
+                    Take Another
                 </button>
             </div>
 
@@ -132,14 +133,14 @@
             </ng-template>
             <div class="images">
                 <input type="file" multiple="multiple" name="avatar">
-                <!-- <input type="button" id="images" name="avatar" value="upload"
-                    onclick="google.script.run.logForm(document.getElementById('uploadTest'));"> -->
+                <input type="button" id="images" name="avatar" value="upload"
+                    onclick="google.script.run.logForm(document.getElementById('uploadTest'));">
             </div>
-            <!-- <div>
+            <div>
                 <h3>Uploaded Images</h3>
 
-                1. {{video}} | 2. {{video}} | 3. {{video}} | 4. {{video}}
-            </div>  -->
+                1. {{video}} | 2. {{video}} | 3. {{video }} | 4. {{video}}
+            </div> 
 
             <div class="subBut">
                 <button type="submit" class="btn btn-primary mt-2" (click)="submit()">Submit</button>
@@ -151,7 +152,6 @@
             </ul>
         </form>
         <video #video></video>
-       
     </div>
 
 </body>

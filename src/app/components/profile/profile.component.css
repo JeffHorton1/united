@@ -39,6 +39,8 @@ img{
 .imageUrl{
     width: 30vh;
     height: 30vh;
+    border-radius: 50%;
+    padding: 7px;
 }
 
 .profile-details{
