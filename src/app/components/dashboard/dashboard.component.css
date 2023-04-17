@@ -10,6 +10,11 @@ body {
     background-size:inherit;
 }
 
+a{
+  color: white;
+  
+}
+
 .button-term1 {
   background-color: green;
   color: #333;
@@ -24,7 +29,7 @@ body {
 .termLab{
   display: flex;
   justify-content: space-evenly;
-  margin-top: 5px;
+  
 }
 .button-term3 {
   background-color: red;

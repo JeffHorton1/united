@@ -11,12 +11,14 @@ import { Injectable } from '@angular/core';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
+import * as faceapi from 'face-api.js';
+import { detectFaces } from './face-detection';
 
 
 @Component({
   selector: 'app-forms',
   templateUrl: './forms.component.html',
-  template: ' <app-forms [data]="parentData"></app-forms>',
+  template: ' <app-forms [data]="parentData"></app-forms><video #video></video><canvas #canvas></canvas>',
   styleUrls: ['./forms.component.css'],
 })
 
@@ -172,8 +174,8 @@ export class FormsComponent implements AfterViewInit {
   
 
   
-  @ViewChild('video') video: ElementRef | undefined;
-  @ViewChild('canvas') canvas: ElementRef | undefined;
+  @ViewChild('video') video: ElementRef | any;
+  @ViewChild('canvas') canvas: ElementRef | any;
   @Output() getPicture = new EventEmitter<WebcamImage>();
 
   showWebcam = true;
@@ -239,7 +241,7 @@ export class FormsComponent implements AfterViewInit {
   async ngAfterViewInit(this: any){
     await this.setupCamera()
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-            // const video = this.video
+            
             navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
             this.video.nativeElement.srcObject = stream;
             this.video.nativeElement.play();})}
@@ -252,6 +254,7 @@ export class FormsComponent implements AfterViewInit {
       try {
         const stream = await navigator.mediaDevices.getUserMedia({
           video: true,
+          audio: true,
         });
         if (stream && this.video) {
           this.video.nativeElement.srcObject = stream;
@@ -293,5 +296,12 @@ export class FormsComponent implements AfterViewInit {
   showImage(_formService: FormService) {
    new Image 
 }
+
+
+async ngAfterViewInIt(setup: any){
+  // await this.setup
+
+}
+
 
 }

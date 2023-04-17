@@ -19,7 +19,7 @@
         crossorigin="anonymous"></script>
     </head>
 <header>
-    <a href="/dashboard"><strong><img class="homeIcon" src="../../../assets/home.png"></strong> </a>    <a  href="/profile"><img class="userIcon" src="../../../assets/user.png"> </a> <a href="/messages"><strong><img class="messageIcon"src="../../../assets/message.png"></strong></a>
+    <a href="/dashboard"><strong><img class="homeIcon" src="../../../assets/home.svg"></strong> </a>    <a  href="/profile"><img class="userIcon" src="../../../assets/user.svg"> </a> <a href="/messages"><strong><img class="messageIcon"src="../../../assets/message.svg"></strong></a>
         </header>
 <body>
    
@@ -94,8 +94,8 @@
 
             <div *ngIf="isCameraExist; else noCameraExist">
 
-                <video [class.show]="!isCaptured" [class.hide]="isCaptured" #video id="avatar" [width]="WIDTH"
-                    [height]="HEIGHT" autoplay name="avatar"></video>
+                <video [class.show]="!isCaptured" [class.hide]="isCaptured" #video id="video" [width]="WIDTH"
+                    [height]="HEIGHT" autoplay name="video" ></video>
                 <canvas [class.show]="isCaptured" [class.hide]="!isCaptured" #canvas id="canvas" [width]="WIDTH"
                     [height]="HEIGHT" name="images"></canvas>
                 <button mat-stroked-button *ngIf="!isCaptured" (click)="capture()">
@@ -132,15 +132,15 @@
                 Camera device not available
             </ng-template>
             <div class="images">
-                <input type="file" multiple="multiple" name="avatar">
-                <input type="button" id="images" name="avatar" value="upload"
+                <input type="file" multiple="multiple" name="video">
+                <input type="button" id="images" name="video" value="upload"
                     onclick="google.script.run.logForm(document.getElementById('uploadTest'));">
             </div>
-            <div>
+            <!-- <div>
                 <h3>Uploaded Images</h3>
 
-                1. {{video}} | 2. {{video}} | 3. {{video }} | 4. {{video}}
-            </div> 
+                1. {{tickets}} | 2. {{video}} | 3. {{video }} | 4. {{video}}
+            </div>  -->
 
             <div class="subBut">
                 <button type="submit" class="btn btn-primary mt-2" (click)="submit()">Submit</button>
@@ -151,7 +151,7 @@
                 </li>
             </ul>
         </form>
-        <video #video></video>
+        <video   #video></video>
     </div>
 
 </body>
